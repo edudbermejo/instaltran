@@ -46,6 +46,14 @@ var photo = {
     },
 
     patch: function (req, res) {
+        
+        var selection = req.query.update;
+        
+        if(selection){
+           
+            if(req.query.update === "comment")
+        
+        }
 
     }
 }
