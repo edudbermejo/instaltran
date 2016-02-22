@@ -27,5 +27,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.0",
+    "Materialize": "materialize#^0.97.5",
+    "angular-ui-router": "^0.2.18"
+  }
 }
