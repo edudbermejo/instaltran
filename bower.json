@@ -1,0 +1,31 @@
+{
+  "name": "instaltran",
+  "description": "a minimal instagram abstraction",
+  "main": "index.js",
+  "authors": [
+    "edudbermejo"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "instagram",
+    "try",
+    "ensayo",
+    "javascript",
+    "angular",
+    "express",
+    "mean",
+    "node",
+    "mongo",
+    "mongodb",
+    "angularjs"
+  ],
+  "homepage": "https://github.com/edudbermejo/instaltran",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
