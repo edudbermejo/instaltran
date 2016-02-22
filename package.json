@@ -20,7 +20,8 @@
     "mean",
     "node",
     "mongo",
-    "mongodb"
+    "mongodb",
+    "angularjs"
   ],
   "author": "edudbermejo",
   "license": "MIT",
