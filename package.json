@@ -1,0 +1,31 @@
+{
+  "name": "instaltran",
+  "version": "0.0.1",
+  "description": "a minimal instagram abstraction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edudbermejo/instaltran.git"
+  },
+  "keywords": [
+    "instagram",
+    "try",
+    "ensayo",
+    "javascript",
+    "angular",
+    "express",
+    "mean",
+    "node",
+    "mongo",
+    "mongodb"
+  ],
+  "author": "edudbermejo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edudbermejo/instaltran/issues"
+  },
+  "homepage": "https://github.com/edudbermejo/instaltran#readme"
+}
