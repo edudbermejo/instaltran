@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
-Schema.pligin(mongoosePaginate);
 
 var photoSchema = new Schema({
     image : String,
-    likes : Array [Schema.Types.ObjectId],
+    likes : [Schema.Types.ObjectId],
     comments : [{
         user : Schema.Types.ObjectId,
         comment : String
@@ -13,6 +12,8 @@ var photoSchema = new Schema({
     title : String,
     publisher_id : Schema.Types.ObjectId
 });
+
+photoSchema.plugin(mongoosePaginate);
 
 var Photos = mongoose.model('Photos', photoSchema);
 

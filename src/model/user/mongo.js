@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
-Schema.pligin(mongoosePaginate);
 
 var userSchema = new Schema({
     _id : Schema.Types.ObjectId,
@@ -11,6 +10,8 @@ var userSchema = new Schema({
     password : String,
     profile_photo : String
 })
+
+userSchema.plugin(mongoosePaginate);
 
 var Users = mongoose.model('Users', userSchema);
 
