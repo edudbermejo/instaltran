@@ -13,6 +13,8 @@ var userSchema = new Schema({
 
 userSchema.plugin(mongoosePaginate);
 
+userSchema.plugin(mongoosePaginate);
+
 var Users = mongoose.model('Users', userSchema);
 
 module.exports = Users;

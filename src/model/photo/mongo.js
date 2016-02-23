@@ -15,6 +15,8 @@ var photoSchema = new Schema({
 
 photoSchema.plugin(mongoosePaginate);
 
+photoSchema.plugin(mongoosePaginate);
+
 var Photos = mongoose.model('Photos', photoSchema);
 
 module.exports = Photos;
