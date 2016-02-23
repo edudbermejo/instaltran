@@ -6,22 +6,18 @@ var users = {
 
     get: function (req, res) {
         // si viene con id se busca una y en caso contrario devolvemos varias paginadas
-        if (req.query.id) {
+        if (req.params.id) {
             //  GET/users/{id}
             Users
-                .where({ user_id: req.param.id })
-                .findOne()
+                .findById(req.params.id)
                 .select('username followers followed password profile_photo')
-                .exec(querySuccess(req,res));
+                .exec(querySuccess(req, res));
         } else {
             //  GET/users?username=asdf  devuelve cinco usuarios que empiezen por la cadena pasada
             if (req.query.username) {
                 var page = 1;
                 Users
-                    .find({ user_id: { $regex: "^" + req.query.username } })
-                    .paginate(page, pageSize)
-                    .select('username followers followed password profile_photo')
-                    .exec(querySuccess(req,res));
+                    .paginate({ username: { $regex: "^" + req.query.username }}, { select: 'username followers followed password profile_photo' }, { page: page, limit: pageSize }, querySuccess(req, res));
             } else {
                 res.sendStatus(400);
             }
@@ -32,12 +28,11 @@ var users = {
         // POST /users + body:{ user }
 
         var photoUpload = new Users(req.body);
-        photoUpload.user_id = req.body.username;
         photoUpload.followers = [];
         photoUpload.followed = [];
+        photoUpload.profile_photo = "";
 
-
-        photoUpload.save(upSuccess(req,res));
+        photoUpload.save(upSuccess(req, res));
 
         console.log(req.body);
     },
@@ -46,24 +41,22 @@ var users = {
         // Pueden actualizarse la foto de perfil, los followers o los followed. En los
         // tres casos lo que se hace es una sustitucion entrando por body los campos necesarios.
         var selection = req.query.update;
-        var id = req.param.id;
+        var id = req.params.id;
 
         if (selection && id) {
 
-            var photoUpdate = new Users();
-
             if (selection === "photo") {
                 // PATCH /users/{id}?update=photo + body:{ photo }
-                photoUpdate
-                    .update({ user_id: id }, { set: { profile_photo: req.body } }, { multi: false }, upSuccess(req,res));
+                Users
+                    .update({ user_id: id }, { $set: { profile_photo: req.body.photo } }, { multi: false }, upSuccess(req, res));
             } else if (selection === "followers") {
                 // PATCH /users/{id}?update=followers + body:{ followers }
-                photoUpdate
-                    .update({ user_id: id }, { $set: { followers: req.body } }, { multi: false }, upSuccess(req,res));
+                Users
+                    .update({ user_id: id }, { $set: { followers: req.body.followers } }, { multi: false }, upSuccess(req, res));
             } else if (selection === "followed") {
                 // PATCH /users/{id}?update=followed + body:{ followed }
-                photoUpdate
-                    .update({ _id: id }, { $set: { followed: req.body } }, { multi: false }, upSuccess(req,res));
+                Users
+                    .update({ user_id: id }, { $set: { followed: req.body.followed } }, { multi: false }, upSuccess(req, res));
             } else {
                 res.sendStatus(400);
             }
@@ -77,6 +70,7 @@ var users = {
 function querySuccess(req, res) {
     return function (err, results) {
         if (!err) {
+            console.log(results);
             res.json(results);
         } else {
             console.log(err);

@@ -13,7 +13,7 @@ app.route('/photos(/:id)?')
     .post(photos.post)
     .patch(photos.patch);
     
-app.route('/users/:id')
+app.route('/users(/:id)?')
     .get(users.get)
     .post(users.post)    
     .patch(users.patch);
