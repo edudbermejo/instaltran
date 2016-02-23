@@ -8,7 +8,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-app.route('/photos/:id')
+app.route('/photos(/:id)?')
     .get(photos.get)
     .post(photos.post)
     .patch(photos.patch);
@@ -18,7 +18,7 @@ app.route('/users/:id')
     .post(users.post)    
     .patch(users.patch);
 
-mongoose.connect('mongodb://localhost/instalgram', function () {
+mongoose.connect('mongodb://localhost/instaltran', function () {
     app.listen(2222, function () {
         console.log('Se ha levantado correctamente el servidor');
     })
