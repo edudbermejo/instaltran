@@ -1,10 +1,7 @@
 export default function () {
     return {
         bindings: {
-            image: '@',
-            likes: '@',
-            title: '@',
-            user_id: '@'
+            photo: '<'
         },
         template: 'src/features/inside/components/photoInList/template.html'
     }
