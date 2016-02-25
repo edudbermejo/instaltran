@@ -10,4 +10,4 @@ angular
     ])
     .config(config)
     .controller('TimelineController', controller)
-    .component('instTimePhoto', component);
+    .component('instTimePhoto', component());

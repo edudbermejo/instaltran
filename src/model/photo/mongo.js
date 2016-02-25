@@ -10,7 +10,8 @@ var photoSchema = new Schema({
         comment : String
     }],
     title : String,
-    user_id : Schema.Types.ObjectId
+    user_id : Schema.Types.ObjectId,
+    user : String
 }, {collection: 'photos'});
 
 photoSchema.plugin(mongoosePaginate);

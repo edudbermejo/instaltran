@@ -1,15 +1,20 @@
-<div class="row">
-    <div class="row center-align">
-        <h3>{{photo.user_id}}</h3>
+<div class="container">
+    <div class="row left-align">
+        <h5 ng-bind="$ctrl.photo.user" class="green-text text-darken-2"></h5>
     </div>
     <div class="row col s10 center-align">
-        <img src={{photo.image}}>
-    </div>
-    <div class="row offset-s1 left-align">
-        <i class="material-icons">favorite border</i>
-        <p>{{photo.likes}}</p>
+        <img src={{$ctrl.photo.image}} style="width: 80%; height:auto;">
     </div>
     <div class="row">
-        <h4>{{photo.title}}</h4>
+        <div class="col s10 offset-s1">
+            <div class="row">
+                <h6 class="green-text text-darken-1"><i class="prefix material-icons">favorite_border</i>{{$ctrl.photo.likes}}
+                </h6>
+            </div>
+        </div>
+    </div>
+    <div class="row center-align">
+        <h5 class="lime-text text-darken-4" ng-bind="$ctrl.photo.title"></h5>
     </div>
 </div>
+<div class="divider"></div>

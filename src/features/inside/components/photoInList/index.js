@@ -3,6 +3,7 @@ export default function () {
         bindings: {
             photo: '<'
         },
-        template: 'src/features/inside/components/photoInList/template.html'
+        controller: function () {},
+        templateUrl: 'src/features/inside/components/photoInList/template.html'
     }
 }

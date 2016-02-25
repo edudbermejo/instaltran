@@ -3,7 +3,7 @@ var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-    user_id : Schema.Types.ObjectId,
+    _id : Schema.Types.ObjectId,
     username : String,
     followers : [Schema.Types.ObjectId], 
     followed : [Schema.Types.ObjectId],

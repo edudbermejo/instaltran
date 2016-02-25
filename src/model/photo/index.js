@@ -10,14 +10,14 @@ var photos = {
             //  GET/photos/{id}
             Photos
                 .findById(req.params.id)
-                .select('image likes comments title user_id')
+                .select('image likes comments title user_id user')
                 .exec(querySuccess(req, res));
         } else {
             //  GET/photos?page=1 se ha de ir incrementando la página en cliente de API            
             if (req.body.followed) {
                 var page = req.query.page || 1;
                 Photos
-                    .paginate({ user_id :{ $in : req.body.followed}}, { select: 'image likes comments title user_id', page: page, limit: pageSize }, querySuccess(req, res));
+                    .paginate({ user_id :{ $in : req.body.followed}}, { select: 'image likes comments title user_id  user', page: page, limit: pageSize }, querySuccess(req, res));
             } else {
                 res.sendStatus(400);
             }

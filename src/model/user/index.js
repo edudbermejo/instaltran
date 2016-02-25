@@ -5,22 +5,41 @@ var pageSize = 5;
 var users = {
 
     get: function (req, res) {
-        // si viene con id se busca una y en caso contrario devolvemos varias paginadas
+        // si viene con id se busca una y en caso contrario o buscamos usuario por username o 
+        // hasta un maximo de cinco que coincidan
         if (req.params.id) {
             //  GET/users/{id}
             Users
                 .findById(req.params.id)
                 .select('username followers followed password profile_photo')
                 .exec(querySuccess(req, res));
-        } else {
-            //  GET/users?username=asdf  devuelve cinco usuarios que empiezen por la cadena pasada
-            if (req.query.username) {
-                var page = 1;
-                Users
-                    .paginate({ username: { $regex: "^" + req.query.username }}, { select: 'username followers followed password profile_photo' }, { page: page, limit: pageSize }, querySuccess(req, res));
-            } else {
-                res.sendStatus(400);
+                
+        } else if (req.query.username) {
+            
+            var _username = req.query.username;
+            
+            if (req.query.strict) {
+
+                var _strict = req.query.strict;
+
+                if (_strict === "s") {
+                    //  GET/users?username=usuariofijo&strict=s  devuelve el usuario con ese nombre de usuario, que ha de ser unico
+                    Users
+                        .findOne({ username: _username })
+                        .select('username followers followed password profile_photo')
+                        .exec(querySuccess(req, res));
+                        
+                } else if (_strict === "n") {
+                    //  GET/users?username=usuariovoluble&strict=n  devuelve cinco usuarios que empiezen por la cadena pasada
+                    var page = 1;
+                    Users
+                        .paginate({ username: { $regex: "^" + _username } }, { select: 'username followers followed password profile_photo' }, { page: page, limit: pageSize }, querySuccess(req, res));
+                } else {
+                    res.sendStatus(400);
+                }
             }
+        } else {
+            res.sendStatus(400);
         }
     },
 
@@ -48,15 +67,15 @@ var users = {
             if (selection === "photo") {
                 // PATCH /users/{id}?update=photo + body:{ photo }
                 Users
-                    .update({ user_id: id }, { $set: { profile_photo: req.body.photo } }, { multi: false }, upSuccess(req, res));
+                    .update({ _id: id }, { $set: { profile_photo: req.body.photo } }, { multi: false }, upSuccess(req, res));
             } else if (selection === "followers") {
                 // PATCH /users/{id}?update=followers + body:{ followers }
                 Users
-                    .update({ user_id: id }, { $set: { followers: req.body.followers } }, { multi: false }, upSuccess(req, res));
+                    .update({ _id: id }, { $set: { followers: req.body.followers } }, { multi: false }, upSuccess(req, res));
             } else if (selection === "followed") {
                 // PATCH /users/{id}?update=followed + body:{ followed }
                 Users
-                    .update({ user_id: id }, { $set: { followed: req.body.followed } }, { multi: false }, upSuccess(req, res));
+                    .update({ _id: id }, { $set: { followed: req.body.followed } }, { multi: false }, upSuccess(req, res));
             } else {
                 res.sendStatus(400);
             }

@@ -2,15 +2,15 @@ export default function () {
     'ngInject';
     var _logged;
 
-    function setLoggedUser(user) {
+    this.setLoggedUser = function(user) {
         _logged = user;
     };
 
-    function getLoggedUser() {
+    this.getLoggedUser = function() {
         return _logged;
     };
 
-    function loggout() {
+    this.loggout = function() {
         _logged = null;
     }
 }
