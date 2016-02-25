@@ -88,5 +88,34 @@ export default function ($usersManager, $http, $q) {
         return _qu.promise;
     };
     
+    this.postPhoto = function(url, title){
+        
+        var _qu = $q.defer();
+        
+        var _user = $usersManager.getLoggedUser();
+        
+        $http({
+            url : _url + '/photos',
+            data : {
+                image : url,
+                username : _user.username,
+                user_id : _user._id,
+                title : title,
+            },
+            method : 'POST'
+        }).then(upPhotoOK)
+        .catch(upPhotoWrong);
+        
+        function upPhotoOK(response) {
+            _qu.resolve(response.data);
+        };
+        
+        function upPhotoWrong(error) {
+            _qu.reject('Error');
+        }
+        
+        return _qu.promise;
+    };
+    
     
 }

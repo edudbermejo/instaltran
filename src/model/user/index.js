@@ -46,12 +46,12 @@ var users = {
     post: function (req, res) {
         // POST /users + body:{ user }
 
-        var photoUpload = new Users(req.body);
-        photoUpload.followers = [];
-        photoUpload.followed = [];
-        photoUpload.profile_photo = "";
+        var userCreate = new Users(req.body);
+        userCreate.followers = [];
+        userCreate.followed = [];
+        userCreate.profile_photo = "";
 
-        photoUpload.save(upSuccess(req, res));
+        userCreate.save(upSuccess(req, res));
 
         console.log(req.body);
     },

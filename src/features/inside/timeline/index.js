@@ -1,7 +1,7 @@
 import config from './config';
 import controller from './controller';
 import component from '../components/photoInList';
-import '../../transversal/externalCalls'
+import '../../transversal/externalCalls';
 
 angular
     .module('inside.timeline', [

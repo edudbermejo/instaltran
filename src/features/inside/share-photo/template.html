@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row col s10 center-align" style="padding-top:10px;">
+        <img src="http://www.stevelarkins.freeuk.com/images/grey_scale.gif" style="width: 80%; height:auto;">
+    </div>
+    <div class="row">
+        <a class="modal-trigger" href="#modalSrc">Ruta!</a>
+    </div>
+    <div class="row">
+        <form class="col s10 offset-s1">
+            <div class="input-field">
+                <input class="light-green-text text-darken-4" placeholder="Titulo" ng-model="spc.title" type="text"></input>
+            </div>
+        </form>
+    </div>
+    <div class="row center-align">
+        <button class="waves-effect waves-light light-green darken-2 btn" ng-click="spc.upPhoto()"><i class="large material-icons light-green-text text-lighten-5">done</i></button>
+    </div>
+</div>
+
+<div id="modalSrc" class="modal modal-fixed-footer">
+    <div class="input-field">
+        <input class="light-green-text text-darken-4" placeholder="Ruta" ng-model="spc.imgUrl" type="text"></input>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
