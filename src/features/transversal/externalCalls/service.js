@@ -7,13 +7,13 @@ export default function ($usersManager, $http, $q) {
     this.getPhotosTimeline = function(page) {
         var _qu = $q.defer();
         
-        var _data = $usersManager.getLoggedUser().followed;
+        var _user = $usersManager.getLoggedUser();
         
         return $http({
             url : _url + '/photos',
             method : 'GET',
-            params : { page : page},
-            data : { followed :_data }
+            params : { page : page,
+                userid : _user._id}
         }).then(backPhotosOK)
         .catch(backPhotosWrong);
         

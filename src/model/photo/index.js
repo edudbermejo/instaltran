@@ -1,4 +1,5 @@
 var Photos = require('./mongo');
+var Users = require('../user/mongo')
 
 var pageSize = 9;
 
@@ -14,13 +15,44 @@ var photos = {
                 .exec(querySuccess(req, res));
         } else {
             //  GET/photos?page=1 se ha de ir incrementando la página en cliente de API            
-            if (req.body.followed) {
+            if (req.query.userid) {
+                
                 var page = req.query.page || 1;
-                Photos
-                    .paginate({ user_id :{ $in : req.body.followed}}, { select: 'image likes comments title user_id  user', page: page, limit: pageSize }, querySuccess(req, res));
+
+                var _qu = new Promise(function (resolve, reject) {
+                    Users
+                        .findById(req.query.userid)
+                        .select('followed')
+                        .exec(function (error, results) {
+                            if(error){
+                                reject('Error recuperando datos');
+                            } else {
+                                resolve(results)
+                            }
+                        });
+                });
+                
+                _qu.then(function (results) {
+                    Photos
+                    .paginate({ user_id: { $in: results.followed } }, { select: 'image likes comments title user_id  user', page: page, limit: pageSize }, querySuccess(req, res));
+                });
+                
+                _qu.catch(function () {
+                    res.sendStatus(400);
+                });               
+                
             } else {
                 res.sendStatus(400);
             }
+        }
+
+        function getFollowers(username) {
+
+            return new Promise(function (resolve, reject) {
+
+            }
+
+                )
         }
     },
 

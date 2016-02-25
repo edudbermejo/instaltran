@@ -17,6 +17,7 @@ export default function ($externalCalls) {
     }];*/
     
     tc.photos = $externalCalls.getPhotosTimeline(_page);
+    console.log(tc.photos);
     
     tc.morePhotos = function () {
         _page++,
