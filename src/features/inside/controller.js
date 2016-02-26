@@ -7,23 +7,23 @@ export default function ($state) {
     var _lightIcon = "material-icons medium light-green-text text-lighten-4"
 
     ic.classTimelineBackground = _darkBackground;
-    ic.classTimelineIcon = _lightBackground;
+    ic.classTimelineIcon = _lightIcon;
     ic.classSharePhotoBackground = _lightBackground;
-    ic.classTimelineIcon = _darkIcon;
+    ic.classSharePhotoIcon = _darkIcon;
 
     ic.goTimeline = function () {
         ic.classTimelineBackground = _darkBackground;
-        ic.classTimelineIcon = _lightBackground;
+        ic.classTimelineIcon = _lightIcon;
         ic.classSharePhotoBackground = _lightBackground;
-        ic.classTimelineIcon = _darkIcon;
-        $state.go('.timeline');
+        ic.classSharePhotoIcon = _darkIcon;
+        $state.go('^.timeline');
     };
 
     ic.goSharePhoto = function () {
         ic.classTimelineBackground = _lightBackground;
-        ic.classTimelineIcon = _darkBackground;
+        ic.classTimelineIcon = _darkIcon;
         ic.classSharePhotoBackground = _darkBackground;
-        ic.classTimelineIcon = _lightIcon;
-        $state.go('.sharephoto');
+        ic.classSharePhotoIcon = _lightIcon;
+        $state.go('^.sharephoto');
     };
 }
