@@ -5,6 +5,7 @@ var vinylSourceStream = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
 var ngAnnotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
 
 gulp.task('default', function () {
     var sources = browserify({
@@ -20,3 +21,9 @@ gulp.task('default', function () {
         //.pipe(uglify())
         .pipe(gulp.dest('build/js/'));
 });
+
+gulp.task('css', function () {    
+    return gulp.src('src/styles/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('build/css/'));
+})

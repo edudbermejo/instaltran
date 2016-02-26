@@ -3,7 +3,7 @@ export default function () {
     var _logged;
 
     this.setLoggedUser = function(user) {
-        _logged = user;
+         _logged = angular.copy(user);
     };
 
     this.getLoggedUser = function() {

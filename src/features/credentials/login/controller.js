@@ -28,4 +28,8 @@ export default function ($usersManager, $state, $externalCalls) {
             }
         }
     };
+    
+    lc.goRegister = function () {
+        $state.go('register');
+    }
 }

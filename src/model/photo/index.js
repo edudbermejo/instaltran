@@ -34,7 +34,7 @@ var photos = {
                 
                 _qu.then(function (results) {
                     Photos
-                    .paginate({ user_id: { $in: results.followed } }, { select: 'image likes comments title user_id  user', page: page, limit: pageSize }, querySuccess(req, res));
+                    .paginate({ user_id: { $in: results.followed } }, { select: 'image likes comments title user_id  user', page: page, limit: pageSize, sort : {'_id' : -1 } }, querySuccess(req, res));
                 });
                 
                 _qu.catch(function () {

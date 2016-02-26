@@ -1,5 +1,5 @@
 export default function ($externalCalls, $state) {
-
+    'ngInject'
     var spc = this;
 
     spc.upPhoto = function () {

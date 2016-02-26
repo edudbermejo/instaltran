@@ -1,7 +1,7 @@
 export default function ($externalCalls) {
     'ngInject';
     var tc = this;
-    
+
     var _page = 1;
     
     /*tc.photos = [{
@@ -15,12 +15,15 @@ export default function ($externalCalls) {
         likes : 321,
         title : 'Buh++!'
     }];*/
-    
-    tc.photos = $externalCalls.getPhotosTimeline(_page);
-    console.log(tc.photos);
-    
+
+    $externalCalls.getPhotosTimeline(_page)
+        .then(function (response) {
+            console.log(response);
+            tc.photos = response;
+        });
+
     tc.morePhotos = function () {
-        _page++,
+        _page++ ,
         tc.photos.push($externalCalls.getPhotos(_page));
     }
 }

@@ -9,7 +9,7 @@ export default function ($usersManager, $http, $q) {
         
         var _user = $usersManager.getLoggedUser();
         
-        return $http({
+        $http({
             url : _url + '/photos',
             method : 'GET',
             params : { page : page,
@@ -19,7 +19,7 @@ export default function ($usersManager, $http, $q) {
         
         function backPhotosOK(response) {
             if(response.data){
-                _qu.resolve(response.data);
+                _qu.resolve(response.data.docs);
             } else {
                 _qu.reject('Nothing found');
             }
@@ -77,7 +77,7 @@ export default function ($usersManager, $http, $q) {
             if(response.data){
                 _qu.resolve(response.data);
             } else {
-                _qu.reject('Nothing found');
+                _qu.resolve(null);
             }
         };
         
@@ -98,7 +98,7 @@ export default function ($usersManager, $http, $q) {
             url : _url + '/photos',
             data : {
                 image : url,
-                username : _user.username,
+                user : _user.username,
                 user_id : _user._id,
                 title : title,
             },
@@ -111,6 +111,31 @@ export default function ($usersManager, $http, $q) {
         };
         
         function upPhotoWrong(error) {
+            _qu.reject('Error');
+        }
+        
+        return _qu.promise;
+    };
+    
+    this.postUser = function(username, password){
+        
+        var _qu = $q.defer();
+        
+        $http({
+            url : _url + '/users',
+            data : {
+               username : username,
+               password : password,
+            },
+            method : 'POST'
+        }).then(upUserOK)
+        .catch(upUserWrong);
+        
+        function upUserOK(response) {
+            _qu.resolve(response.data);
+        };
+        
+        function upUserWrong(error) {
             _qu.reject('Error');
         }
         

@@ -1,14 +1,18 @@
 <div class="container">
-    <div class="row col s10 center-align" style="padding-top:10px;">
+    <!--<div class="row col s10 center-align" style="padding-top:10px;">
         <img src="http://www.stevelarkins.freeuk.com/images/grey_scale.gif" style="width: 80%; height:auto;">
     </div>
     <div class="row">
         <a class="modal-trigger" href="#modalSrc">Ruta!</a>
-    </div>
+    </div>-->
+    
     <div class="row">
         <form class="col s10 offset-s1">
+            <div id="shareInput" class="input-field">
+                <input class="light-green-text text-darken-4" placeholder="Ruta" ng-model="spc.imgUrl" type="text"/>
+                </div>
             <div class="input-field">
-                <input class="light-green-text text-darken-4" placeholder="Titulo" ng-model="spc.title" type="text"></input>
+                <input class="light-green-text text-darken-4" placeholder="Titulo" ng-model="spc.title" type="text"/>
             </div>
         </form>
     </div>
@@ -17,7 +21,7 @@
     </div>
 </div>
 
-<div id="modalSrc" class="modal modal-fixed-footer">
+<!--<div id="modalSrc" class="modal modal-fixed-footer">
     <div class="model-content">
         <div class="input-field">
             <input class="light-green-text text-darken-4" placeholder="Ruta" ng-model="spc.imgUrl" type="text"></input>
@@ -26,4 +30,4 @@
     <div class="modal-footer">
         <a class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
-</div>
+</div>-->

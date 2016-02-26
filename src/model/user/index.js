@@ -1,4 +1,5 @@
 var Users = require('./mongo');
+var ObjectID = require('mongodb').ObjectID;
 
 var pageSize = 5;
 
@@ -50,6 +51,8 @@ var users = {
         userCreate.followers = [];
         userCreate.followed = [];
         userCreate.profile_photo = "";
+        userCreate._id =  new ObjectID();
+        console.log(userCreate);
 
         userCreate.save(upSuccess(req, res));
 

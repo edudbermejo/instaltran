@@ -1,4 +1,4 @@
-export default function ($state) {
+export default function ($state, $usersManager) {
     'ngInject';
     var ic = this;
     var _darkBackground = "col s6 center-align green darken-3";
@@ -25,5 +25,10 @@ export default function ($state) {
         ic.classSharePhotoBackground = _darkBackground;
         ic.classSharePhotoIcon = _lightIcon;
         $state.go('^.sharephoto');
+    };
+    
+    ic.loggout = function () {
+        $usersManager.loggout();
+        $state.go('login');
     };
 }

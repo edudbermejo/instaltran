@@ -1,12 +1,17 @@
-<header style="position : fixed; top: 0px; left:0px; right: 0px;">
-    <div class="center-align light-green darken-4">
-        <h2 class="light-green-text text-accent-1" style="margin-top: 0px; margin-bottom: 0px; font-weight: 600; font-style: bold;">Instaltrán</h2>
+<header id="insideHeader">
+    <div class="row  light-green darken-4">
+        <div class="col s10 center-align">
+            <h2 id="insideH2" class="light-green-text text-accent-1">Instaltrán</h2>
+        </div>
+        <div class="col s2 center-align">
+            <i id="insideLoggoutBtn" class="material-icons small light-green-text text-lighten-3" ng-click="ic.loggout()">power_settings_new</i>
+        </div>
     </div>
 </header>
 
-<div ui-view style="padding-top: 54px; padding-bottom:62px;"></div>
+<div id="insideView" ui-view ></div>
 
-<footer class="row light-green darken-4" style="float: none; position : fixed; bottom: 0px; margin-bottom:0px; left: 0px; right: 0px; padding-top: 0px">
+<footer id="insideFooter" class="row light-green darken-4">
     <div ng-class="ic.classTimelineBackground">
         <i ng-class="ic.classTimelineIcon" ng-click="ic.goTimeline()">view_day</i>
     </div>

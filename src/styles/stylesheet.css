@@ -1,0 +1,65 @@
+html{
+    margin : 0;
+    height : 100%;
+}
+
+body {
+    min-height : 100%;
+}
+
+#superiorView {
+    height : 100vh;
+}
+
+#inView {
+    height : 100vh;
+}
+
+#headerLogin {
+    padding-top : 15px;
+    padding-bottom: 30px;
+}
+
+#h2Login {
+    font-weight: 500;
+}
+
+#photoInListImg {
+    width: 80%; height:auto;
+}
+
+#shareInput {
+    padding-top:30%;
+}
+
+#insideHeader {
+    position : fixed; 
+    top: 0px; 
+    left:0px; 
+    right: 0px;
+}
+
+#insideH2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-style: bold;
+}
+
+#insideLoggoutBtn {
+    padding-top:13px;
+}
+
+#insideView {
+    padding-top: 54px; 
+    padding-bottom:62px;
+}
+
+#insideFooter {
+    position : fixed; 
+    bottom: 0px; 
+    margin-bottom:0px; 
+    left: 0px; 
+    right: 0px; 
+    padding-top: 0px
+}
