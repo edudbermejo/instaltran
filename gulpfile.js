@@ -17,8 +17,8 @@ gulp.task('default', function () {
     return sources.bundle()
         .pipe(vinylSourceStream('app.min.js'))
         .pipe(vinylBuffer())
-        //.pipe(ngAnnotate())
-        //.pipe(uglify())
+        .pipe(ngAnnotate())
+        .pipe(uglify())
         .pipe(gulp.dest('build/js/'));
 });
 
